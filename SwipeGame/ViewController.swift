@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     func animate1() {
-        UIView.animate(withDuration: 4.0, animations: {
+        UIView.animate(withDuration: 4.0, delay: 0.0, options: .allowUserInteraction, animations: {
             let num1 : CGFloat = CGFloat(arc4random_uniform(667))
             let num2 : CGFloat = CGFloat(arc4random_uniform(375))
             self.label1.frame.origin.y = num1
@@ -43,6 +43,16 @@ class ViewController: UIViewController {
             self.animate1()
             print("Animation1 completed")
         })
+        /*
+        UIView.animate(withDuration: 4.0, animations: {
+            let num1 : CGFloat = CGFloat(arc4random_uniform(667))
+            let num2 : CGFloat = CGFloat(arc4random_uniform(375))
+            self.label1.frame.origin.y = num1
+            self.label1.frame.origin.x = num2
+        }, completion: {(bool) in
+            self.animate1()
+            print("Animation1 completed")
+        }) */
     }
     
     func timerExample() {
