@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     var number : Int = 0
     var timer = Timer()
+    var animator: UIViewPropertyAnimator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +30,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func label1SwipeRight(_ sender: UISwipeGestureRecognizer) {
-        number += 1
+        number -= 1
         label1.text = String(number)
     }
     
     func animate1() {
+        /*animator = UIViewPropertyAnimator(duration: 4.0, curve: .easeInOut, animations: {
+            let num1 : CGFloat = CGFloat(arc4random_uniform(667))
+            let num2 : CGFloat = CGFloat(arc4random_uniform(375))
+            self.label1.frame.origin.y = num1
+            self.label1.frame.origin.x = num2
+        }) */
+        
         UIView.animate(withDuration: 4.0, delay: 0.0, options: .allowUserInteraction, animations: {
             let num1 : CGFloat = CGFloat(arc4random_uniform(667))
             let num2 : CGFloat = CGFloat(arc4random_uniform(375))
@@ -43,6 +51,7 @@ class ViewController: UIViewController {
             self.animate1()
             print("Animation1 completed")
         })
+        
         /*
         UIView.animate(withDuration: 4.0, animations: {
             let num1 : CGFloat = CGFloat(arc4random_uniform(667))
@@ -61,7 +70,8 @@ class ViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        label1.text = String(Int(label1.text!)! + 1)
+        number += 1
+        label1.text = String(number)
     }
     
 }
